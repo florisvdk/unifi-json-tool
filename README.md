@@ -8,6 +8,7 @@ This tool imports unifi site information using the Art-of-WiFi/UniFi-API-client 
 - Add a unifi site to other unifi site vpn with bgp for routing with generated passwords
 - IGMP proxy configuration
 - Display the generated json only, you can copy and paste this into the correct file on the controller. Api to automate this is planned.
+- Mdns repeater
 
 More is in development.
 
