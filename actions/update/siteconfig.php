@@ -33,6 +33,7 @@ if ($_POST['bgp'] == 1) {
 
 $bgprouterid = filter_var($_POST['bgprouterid'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 $bgpas = filter_var($_POST['bgpas'], FILTER_VALIDATE_INT);
+if ($bgpas == false) $bgpas = 0;
 
 $strQuery1 = "UPDATE `sites` SET `bgp`='" . $bgp . "', `bgprouterid`='" . $bgprouterid . "', `bgpas`='" . $bgpas . "' WHERE `idsites`='" . $site . "';";
 $result1 = $dbhandle->query($strQuery1) or exit("Error code ({$dbhandle->errno}): {$dbhandle->error}");
