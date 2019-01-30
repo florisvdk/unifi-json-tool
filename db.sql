@@ -1,3 +1,10 @@
+-- MySQL Workbench Synchronization
+-- Generated: 2019-01-30 11:36
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Floris
+
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
@@ -79,6 +86,7 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `sitesubnets` (
   `idsitesubnets` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` TEXT NULL DEFAULT NULL,
   `subnet` TEXT NULL DEFAULT NULL,
   `inbgp` TINYINT(1) NULL DEFAULT NULL,
   `site` INT(11) NOT NULL,
@@ -86,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `sitesubnets` (
   `igmpupstream` TINYINT(1) NULL DEFAULT NULL,
   `igmpdownstream` TINYINT(1) NULL DEFAULT NULL,
   `dnsredirect` TINYINT(1) NULL DEFAULT NULL,
-  `name` TEXT NULL DEFAULT NULL,
+  `mdnsrepeater` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`idsitesubnets`),
   UNIQUE INDEX `idsitesubnets_UNIQUE` (`idsitesubnets` ASC),
   INDEX `fk_sitesubnets_sites1_idx` (`site` ASC),
