@@ -16,5 +16,11 @@ More is in development.
 1. install an apache or nginx webserver with php 5.6 or higher.
 2. install a mysql or mariadb server and the php module for it.
 3. copy or move the settings template in includes/php/ to settings.php in the same folder and edit the configuration.
-4. Import the sql file in the root directory.
+4. Import the db.sql file in the root directory.
 5. Done.
+
+# Upgrading
+
+1. Replace all files.
+2. Import the update.sql file in the root directory.
+3. Done.

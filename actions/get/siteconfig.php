@@ -39,7 +39,7 @@ echo '</tbody></table></div></div></div><br>';
 
 // show netwoks
 
-echo '<div class="card"><div class="card-header">Site networks</div><div class="card-body"><div class="table-responsive"><table class="table table-striped"><thead><tr><th> </th><th>To site</th><th>Distribute in bgp</th><th>IGMP</th><th>DNS redirect</th></tr></thead><tbody>';
+echo '<div class="card"><div class="card-header">Site networks</div><div class="card-body"><div class="table-responsive"><table class="table table-striped"><thead><tr><th> </th><th>To site</th><th>Distribute in bgp</th><th>IGMP</th><th>DNS redirect</th><th>mDNS repeater</th></tr></thead><tbody>';
 
 foreach (getsitenetworks($site) as &$sitesubnets) {
 
@@ -73,6 +73,18 @@ foreach (getsitenetworks($site) as &$sitesubnets) {
   echo '</td><td>';
 
   if ($sitesubnets['dnsredirect'] == 1) {
+
+    echo '<i class="fas fa-check text-success"></i>';
+
+  } else {
+
+    echo '<i class="fas fa-times text-danger"></i>';
+
+  }
+
+	echo '</td><td>';
+
+  if ($sitesubnets['mdnsrepeater'] == 1) {
 
     echo '<i class="fas fa-check text-success"></i>';
 

@@ -2,17 +2,41 @@
 
 // check for service usage
 
-if (hasdnsredirect($site)) {
+if (hasdnsredirect($site) or hasmdnsrepeater($site)) {
 
 // nat counter variables
 $natlow = 1;
 $nathigh = 6000;
 
-
 //check dns redirect
 
   $configurationjson .= '
         "service": {';
+
+  if (hasmdnsrepeater($site)) {
+
+    $configurationjson .= '
+                "mdns": {
+                        "repeater": {
+                                "interface": [';
+
+    foreach (getmdnsrepeaterinfo($site) as &$configmdns) {
+
+      $configurationjson .= '
+                                        "' . $configmdns['interface'] . '",';
+
+    }
+
+    $configurationjson = substr($configurationjson, 0, -1);
+
+    $configurationjson .= '
+                                ]
+                        }
+                },';
+
+    if (!hasdnsredirect($site)) $configurationjson = substr($configurationjson, 0, -1);
+
+  }
 
   if (hasdnsredirect($site)) {
 
@@ -63,12 +87,12 @@ $nathigh = 6000;
   $configurationjson = substr($configurationjson, 0, -1);
 
   $configurationjson .= '
-                        }';
+                        }
+                }';
 
   }
 
   $configurationjson .= '
-                }
         },';
 
 if(!hasbgp($site)) $configurationjson = substr($configurationjson, 0, -1);

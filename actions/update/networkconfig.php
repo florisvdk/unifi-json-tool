@@ -60,7 +60,17 @@ if ($_POST['dnsredirect'] == 1) {
 
 }
 
-$strQuery1 = "UPDATE `sitesubnets` SET `inbgp`='" . $bgp . "', `igmpupstream`='" . $igmpupstream . "', `igmpdownstream`='" . $igmpdownstream . "', `dnsredirect`='" . $dnsredirect . "' WHERE `idsitesubnets`='" . $network . "';";
+if ($_POST['mdnsrepeater'] == 1) {
+
+  $mdnsrepeater = 1;
+
+} else {
+
+  $mdnsrepeater = 0;
+
+}
+
+$strQuery1 = "UPDATE `sitesubnets` SET `inbgp`='" . $bgp . "', `igmpupstream`='" . $igmpupstream . "', `igmpdownstream`='" . $igmpdownstream . "', `dnsredirect`='" . $dnsredirect . "', `mdnsrepeater`='" . $mdnsrepeater . "' WHERE `idsitesubnets`='" . $network . "';";
 $result1 = $dbhandle->query($strQuery1) or exit("Error code ({$dbhandle->errno}): {$dbhandle->error}");
 
 echo '<div class="alert alert-success" role="alert">Updated successfully.</div>';

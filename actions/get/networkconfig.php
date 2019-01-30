@@ -75,6 +75,16 @@ if ($networkinfo['dnsredirect'] == 1) {
 
 echo '> Use dns redirect</label></div>';
 
+echo '<div class="form-group form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" name="mdnsrepeater" value="1"';
+
+if ($networkinfo['mdnsrepeater'] == 1) {
+
+  echo " checked";
+
+}
+
+echo '> Use mDNS repeater</label></div>';
+
 echo '<button type="submit" class="btn btn-success">Save</button></form>';
 
 echo '</div></div><br>';

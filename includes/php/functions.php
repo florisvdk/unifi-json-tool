@@ -136,6 +136,26 @@ function hasbgp($site) {
 
 }
 
+// hasmdnsrepeater - returns true if mdns repeater is used for the site
+
+function hasmdnsrepeater($site) {
+
+	global $dbhandle;
+
+  $strQuery1 = "SELECT site FROM sitesubnets WHERE site = '" . $site . "' AND mdnsrepeater = '1' ;";
+  $result1 = $dbhandle->query($strQuery1) or exit("Error code ({$dbhandle->errno}): {$dbhandle->error}");
+  $response1 = mysqli_fetch_array($result1);
+
+  if($response1 != null) {
+
+    return TRUE;
+
+  }
+
+	return FALSE;
+
+}
+
 // hasdnsredirect - returns true if dns redirect is used for the site
 
 function hasdnsredirect($site) {
@@ -217,6 +237,25 @@ function getdnsredirectinfo($site) {
 	global $dbhandle;
 
 	$strQuery2 = "SELECT interface FROM sitesubnets WHERE dnsredirect = '1' AND site = '" . $site . "';";
+	$result2 = $dbhandle->query($strQuery2) or exit("Error code ({$dbhandle->errno}): {$dbhandle->error}");
+
+	while ($row = mysqli_fetch_array($result2)) {
+
+		$array[] = $row;
+
+	}
+
+  return $array;
+
+}
+
+// getmdnsrepeaterinfo - returns an array with all the needed info
+
+function getmdnsrepeaterinfo($site) {
+
+	global $dbhandle;
+
+	$strQuery2 = "SELECT interface FROM sitesubnets WHERE mdnsrepeater = '1' AND site = '" . $site . "';";
 	$result2 = $dbhandle->query($strQuery2) or exit("Error code ({$dbhandle->errno}): {$dbhandle->error}");
 
 	while ($row = mysqli_fetch_array($result2)) {

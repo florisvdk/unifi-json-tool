@@ -31,6 +31,7 @@ echo "<p>";
 if (hasigmpproxy($site)) echo "This site uses igmp proxy.<br>";
 if (hasbgp($site)) echo "This site uses bgp.<br>";
 if (hasdnsredirect($site)) echo "This site uses dns redirect.<br>";
+if (hasmdnsrepeater($site)) echo "This site uses mdns repeater.<br>";
 
 if (hasbgp($site)) $configvpnarray = getvpnconnectioninfo($site);
 if (hasdnsredirect($site)) $configdnsarray = getdnsredirectinfo($site);
